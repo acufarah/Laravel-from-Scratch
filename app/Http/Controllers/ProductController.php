@@ -7,19 +7,23 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index() {
-        return "This is the list of products FROM CONTROLLER";
+        return view('products.index');
     }
 
     public function create() {
-        return "This is the form to create a new product FROM CONTROLLER";
+        return view('products.create');
     }
 
     public function store($product) {
         //
     }
 
+    public function show($product) {
+        return view('products.show');
+    }
+
     public function edit($product) {
-        return "This is the form to edit product {$product} FROM CONTROLLER";
+        return view('products.edit');
     }
 
     public function update($product) {
