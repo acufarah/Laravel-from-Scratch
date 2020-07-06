@@ -64,9 +64,13 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            <h1>Soap (1)</h1>
-            <p>Best soap ever.</p>
+        <div>
+            <h1>{{$product->title}} ({{$product->id}})</h1>
+            {!! $subtitle !!}
+            <p>{{$product->description}}</p>
+            <p>{{$product->price}}</p>
+            <p>{{$product->stock}}</p>
+            <p>{{$product->status}}</p>
         </div>
     </body>
 </html>

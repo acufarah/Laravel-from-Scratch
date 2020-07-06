@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class ProductController extends Controller
 {
     public function index() {
-        return view('products.index');
+        $products= Product::all();
+        return view('products.index')->with([
+            'products'=> $products,
+        ]);
     }
 
     public function create() {
@@ -19,7 +23,11 @@ class ProductController extends Controller
     }
 
     public function show($product) {
-        return view('products.show');
+        $product= Product::findOrFail($product);
+        return view('products.show')->with([
+            'product'=> $product,
+            'subtitle'=>'<h2>Something about the product</h2>',
+            ]);
     }
 
     public function edit($product) {
