@@ -18,8 +18,9 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function store($product) {
-        //
+    public function store() {
+        $product= Product::create(request()->all());
+        return $product;
     }
 
     public function show($product) {
@@ -31,11 +32,16 @@ class ProductController extends Controller
     }
 
     public function edit($product) {
-        return view('products.edit');
+        return view('products.edit')->with([
+            'product'=> Product::findOrFail($product),
+        ]);
     }
 
     public function update($product) {
-        //
+        $product= Product::findOrFail($product);
+        $product->update(request()->all());
+
+        return $product;
     }
 
     public function destroy($product) {

@@ -2,6 +2,7 @@
 @section('content')
     <h1>Create a Product</h1>
     <form method="POST" action="{{ route('products.store') }}">
+    @csrf
         <div class="form-row">
             <label>Title</label>
             <input class="form-control" type="text" name="title" required>
@@ -25,6 +26,9 @@
                 <option value="available" >Available</option>
                 <option value="unavailable" >Unavailable</option>
             </select>
+        </div>
+        <div class="form-row">
+            <button class="btn btn-primary btn-lg" type="submit">Create Product</button>
         </div>
     
     </form>
