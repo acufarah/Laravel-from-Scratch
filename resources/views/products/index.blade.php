@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('content')
     <h1>List of Products</h1>
+
+    <a href="{{ route('products.create') }}" class="btn btn-success">Create</a>
+
     @empty ($products)
         <div class="alert alert-warning">list is empty</div>
     @else
@@ -13,6 +16,7 @@
                 <th>Price</th>
                 <th>Stock</th>
                 <th>Status</th>
+                <th>Actions</th>
             </thead>
             <tbody>
             @foreach ($products as $product)
@@ -23,6 +27,10 @@
                     <td>{{$product->price}}</td>
                     <td>{{$product->stock}}</td>
                     <td>{{$product->status}}</td>
+                    <td>
+                        <a href="{{ route('products.show', $product->id) }}" class="btn btn-link">Show</a>
+                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-link">Edit</a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>   
